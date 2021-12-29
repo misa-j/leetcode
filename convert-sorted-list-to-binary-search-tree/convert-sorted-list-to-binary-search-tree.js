@@ -19,35 +19,27 @@
  */
 var sortedListToBST = function(head) {
     
-    function find(head) {
-        let p1 = head;
-        let prev = head;
-        let p2 = head;
-
-        while(p2 && p2.next) {
-            prev = p1;
-            p1 = p1.next;
-            p2 = p2.next.next;
-        }
-
-        prev.next = null;
-        
-        return p1;
+    let list = [];
+    
+    while(head) {
+        list.push(head.val);
+        head = head.next;
     }
     
-    function makeTree(head) {
-        if(!head) return null;
+    function makeTree(i, j) {
+        if(i > j) return null;
+        if(i === j) return new TreeNode(list[i]);
         
-        const middle = find(head);
-        const node = new TreeNode(middle.val);
+        const middle = Math.floor((i + j) / 2);
+        const node = new TreeNode(list[middle]);
 
-        if(head !== middle) node.left = makeTree(head);
-        node.right = makeTree(middle.next);
+        node.left = makeTree(i, middle - 1);
+        node.right = makeTree(middle + 1, j);
         
         return node;
     }
     
-    return makeTree(head);
+    return makeTree(0, list.length - 1);
 };
 
 
