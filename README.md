@@ -1,2 +1,2 @@
-# leetcode (algorithms and data structures practice)
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub).
+## leetcode (algorithms and data structures practice)
+some of my solutions to leetcode problems
