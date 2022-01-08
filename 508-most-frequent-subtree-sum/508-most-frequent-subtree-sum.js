@@ -17,10 +17,10 @@ var findFrequentTreeSum = function(root) {
     function traverse(node) {
         if(!node) return 0;
         if(node.left === node.right) {
-            if(!map.get(node.val)) map.set(node.val, [1]);
-            else map.get(node.val)[0]++;
+            if(!map.get(node.val)) map.set(node.val, 1);
+            else map.set(node.val, map.get(node.val) + 1);
             
-            max = Math.max(max, map.get(node.val)[0]);
+            max = Math.max(max, map.get(node.val));
             
             return node.val;
         }
@@ -30,10 +30,10 @@ var findFrequentTreeSum = function(root) {
         
         const n = l + r + node.val;
         
-        if(!map.get(n)) map.set(n, [1]);
-        else map.get(n)[0]++;
+        if(!map.get(n)) map.set(n, 1);
+        else map.set(n, map.get(n) + 1);
         
-        max = Math.max(max, map.get(n)[0]);
+        max = Math.max(max, map.get(n));
         
         return n;
     }
@@ -42,7 +42,7 @@ var findFrequentTreeSum = function(root) {
     let res = [];
     
     for (const [key, value] of map) {
-        if(value[0] === max) res.push(key);
+        if(value === max) res.push(key);
     }
     
     return res;
