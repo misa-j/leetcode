@@ -15,8 +15,6 @@ var insert = function(intervals, newInterval) {
             flag = false;
             const current = [start, end];
             
-            //if(i < intervals.length - 1 && end  intervals[i + 1][0])
-            
             while(i <= intervals.length - 1 && intervals[i][0] <= end) {
                 current[1] = Math.max(end, intervals[i][1]);
                 i++;
@@ -35,9 +33,7 @@ var insert = function(intervals, newInterval) {
     
     if(flag) {
         if(res[res.length - 1][1] < newInterval[0]) res.push(newInterval);
-        else {
-            res[res.length - 1][1] = Math.max(newInterval[1], res[res.length - 1][1]);
-        }
+        else res[res.length - 1][1] = Math.max(newInterval[1], res[res.length - 1][1]);
     }
     
     return res;
