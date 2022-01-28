@@ -7,13 +7,7 @@ var countSubstrings = function(s) {
     
     function length(i, j) {
         let res = 0;
-        
-        while(i >= 0 && j < s.length && s[i] === s[j]) {
-            i--;
-            j++;
-            res++;
-        }
-        
+        while(i >= 0 && j < s.length && s[i--] === s[j++]) res++;
         return res;
     }
     
