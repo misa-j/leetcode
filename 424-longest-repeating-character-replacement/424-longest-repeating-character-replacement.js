@@ -38,6 +38,7 @@ var characterReplacement = function(s, k) {
     
     for(let i = 0; i < 26; i++) {
         if(map[i].length) res = Math.max(res, maxLen(map[i], s[map[i][0]]));
+        if(res === s.length) break;
     }
     
     return res;
