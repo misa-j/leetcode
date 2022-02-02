@@ -12,12 +12,7 @@
 var reorderList = function(head) {
     let p1 = head, p2 = head;
     let prev = null;
-    let len = 0;
-    
-    while(p1) {
-        p1 = p1.next;
-        len++;
-    }
+    let flag = false;
     
     p1 = head;
     
@@ -29,11 +24,13 @@ var reorderList = function(head) {
         p1 = next;
     }
     
+    if(p2) flag = true;
+    
     let prevNode = null;
     p2 = p1;
     p1 = prev;
     
-    if((len & 1) === 1) {
+    if(flag) {
         prevNode = p2;
         const temp = p2.next;
         p2.next = null;
