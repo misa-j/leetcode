@@ -28,6 +28,7 @@ var findLadders = function(beginWord, endWord, wordList) {
     while(q.length) {
         const len = q.length;
         let idx = new Set();
+        let flag = false;
         
         for(let i = 0; i < len; i++) {
             const word = q.shift();
@@ -43,8 +44,10 @@ var findLadders = function(beginWord, endWord, wordList) {
         for(const index of idx) {
             seen[index] = true;
             q.push(wordList[index]);
+            if(wordList[index] === endWord) flag = true;
         }
         
+        if(flag) break;
     }
     
     function traverse(word, current) {
